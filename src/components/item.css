@@ -1,0 +1,20 @@
+.titreitem{
+    color: blue;
+}
+
+
+
+
+.box{
+    background-color: #00ffff;
+    width: 80px;
+    height: 80px;
+    margin: 40px;
+    transition: all ease-in-out 0.4s;
+
+}
+.animated{
+    background-color: black;
+    transform: scale(1.3);
+    
+}
