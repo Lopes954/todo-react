@@ -16,6 +16,8 @@ export default function Form(){
        
     ])
 
+    // ce nouveau state va nous permettre de prendre en compte le contenu
+
     const [stateInput, setStateInput] = useState();
 
     // Creation d'une fonction qui va permettre de supprimer des elements
@@ -28,20 +30,40 @@ export default function Form(){
         setDataArr(filteredState)
     }
 
-    const linkeInput = e =>{
-        console.log(e);
+
+    //function qui va permettre d'ajouter un element
+
+    const linkedInput = e =>{
+        setStateInput(e);
     }
 
+    const addTodo = e =>{
+        e.preventDefault();
+        const newArr = [...dataArr]
+
+        const newTodo = {};
+        newTodo.txt = stateInput
+        newTodo.id = uuidv4();
+
+        newArr.push(newTodo);
+        setDataArr(newArr);
+        
+        setStateInput('');
+
+
+    }
+
+    
 
     return (
         <div>
-            <form action="post" className="col-mb-3">
+            <form onSubmit={addTodo}className="col-mb-3">
 
             <h5> chose a faire</h5>
 
            
                 
-                <input onInput={e => linkedInput(e.target.value)} className="form-control" id="todo" />
+                <input value= {stateInput} onChange={e => linkedInput(e.target.value)} className="form-control" id="todo" />
                 <button className="mt-2 btn btn-primary">Envoyer</button>
             </form>
 
